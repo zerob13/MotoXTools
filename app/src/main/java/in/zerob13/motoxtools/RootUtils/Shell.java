@@ -49,6 +49,7 @@ public class Shell {
         try {
             for (int i = 0; i < mCommands.size(); i++) {
                 os.writeBytes(mCommands.get(i).getCommandLine());
+                os.writeBytes("\n");
             }
             os.writeBytes("exit\n");
             os.flush();

@@ -9,13 +9,22 @@ import in.zerob13.motoxtools.RootUtils.Shell;
 public class Simfake {
     private static final String COMMAND_PREFIX = "setprop";
     private static final String[] PROPERTIES = {"gsm.sim.operator.numeric \"310004\"", "gsm.sim.operator.iso-country \"us\"", "gsm.sim.operator.alpha \"Verizon\""};
-    public static void fakeSim(){
-        Shell rootShell=new Shell();
-        for(String pro:PROPERTIES) {
+
+    public static void fakeSimAll() {
+        Shell rootShell = new Shell();
+        for (String pro : PROPERTIES) {
             Command command = new Command(COMMAND_PREFIX, pro);
             rootShell.addCommand(command);
         }
-     rootShell.execute();
+        rootShell.execute();
+
+    }
+
+    public static void fakeSimNum() {
+        Shell rootShell = new Shell();
+        Command command = new Command(COMMAND_PREFIX, "gsm.sim.operator.numeric \"310004\"");
+        rootShell.addCommand(command);
+        rootShell.execute();
 
     }
 
